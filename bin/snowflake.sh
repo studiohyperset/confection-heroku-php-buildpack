@@ -18,7 +18,7 @@ echo "[LOG] Building Snowflake"
 bash $snowflake_dir/scripts/build_pdo_snowflake.sh
 
 echo "[DEBUG]"
-$PHP_HOME/bin/php -i | grep '^extension_dir'
+
 echo "[DEBUG] PHP_HOME=$PHP_HOME"
 echo "[DEBUG] SNOWFLAKE DIR=$snowflake_dir"
 echo "[LOG] Copying PDO Snowflake to Extensions Folder"
