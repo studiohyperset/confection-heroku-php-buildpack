@@ -17,6 +17,9 @@ export PHP_HOME=$1
 echo "[LOG] Building Snowflake"
 bash $snowflake_dir/scripts/build_pdo_snowflake.sh
 
+echo "[DEBUG] PHP_HOME=$PHP_HOME"
+echo "[DEBUG] SNOWFLAKE DIR=$snowflake_dir"
+echo "[DEBUG] PATH=$PATH"
 echo "[LOG] Copying PDO Snowflake to Extensions Folder"
 cp $snowflake_dir/scripts/pdo_snowflake.so $PATH/extensions
 
