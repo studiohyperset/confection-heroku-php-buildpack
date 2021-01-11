@@ -11,20 +11,20 @@ if [ ! -d "$snowflake_dir" ]; then
   echo "[ERROR] Failed to find snowflake directory $snowflake_dir"
   exit
 fi
+echo "[LOG] Setting PHP_HOME"
 export PHP_HOME=$1
+
+echo "[LOG] Building Snowflake"
 bash $snowflake_dir/scripts/build_pdo_snowflake.sh
 
-# /app/php/bin/phpize
-# ./configure --enable-phalcon --with-php-config=$PHP_ROOT/bin/php-config
-# make
-# make install
-BUILD_DIR=$1
-ln -s $BUILD_DIR/.heroku /app/.heroku
-export PATH=/app/.heroku/php/bin:$PATH
-bash ./install
+echo "[LOG] Copying PDO Snowflake to Extensions Folder"
 cp $snowflake_dir/scripts/pdo_snowflake.so $PATH/extensions
+
+echo "[LOG] Copying cacert to PATH"
 cp $snowflake_dir/libsnowflakeclient/cacert.pem $PATH
-cd
-echo "Insert extension and cacert on php.ini"
+
+echo "[LOG] Inserting extension and certificate on php.ini"
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini 
 echo "pdo_snowflake.cacert=$PATH/cacert.pem" >> /app/.heroku/php/etc/php/php.ini 
+
+echo "[LOG] Finished Snowflake Setup"
