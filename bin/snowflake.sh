@@ -24,10 +24,10 @@ echo "[LOG] Copying PDO Snowflake to Extensions Folder"
 cp $PHP_HOME/pdo_snowflake/modules/pdo_snowflake.so /app/.heroku/php/etc/php/ext
 
 echo "[LOG] Copying cacert to PATH"
-cp $snowflake_dir/libsnowflakeclient/cacert.pem $PATH
+cp $snowflake_dir/libsnowflakeclient/cacert.pem /app/.heroku/php/
 
 echo "[LOG] Inserting extension and certificate on php.ini"
 echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini 
-echo "pdo_snowflake.cacert=$PATH/cacert.pem" >> /app/.heroku/php/etc/php/php.ini 
+echo "pdo_snowflake.cacert=/app/.heroku/php/cacert.pem" >> /app/.heroku/php/etc/php/php.ini 
 
 echo "[LOG] Finished Snowflake Setup"
