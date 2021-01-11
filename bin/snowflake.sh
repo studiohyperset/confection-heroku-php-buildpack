@@ -11,6 +11,7 @@ if [ ! -d "$snowflake_dir" ]; then
   echo "[ERROR] Failed to find snowflake directory $snowflake_dir"
   exit
 fi
+export PHP_HOME=$1
 source $snowflake_dir/scripts/build_pdo_snowflake.sh
 
 # /app/php/bin/phpize
