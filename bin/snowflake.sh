@@ -21,7 +21,7 @@ echo "[DEBUG] PHP_HOME=$PHP_HOME"
 echo "[DEBUG] SNOWFLAKE DIR=$snowflake_dir"
 echo "[DEBUG] PATH=$PATH"
 echo "[LOG] Copying PDO Snowflake to Extensions Folder"
-cp $snowflake_dir/scripts/pdo_snowflake.so $PATH/extensions
+cp $PHP_HOME/pdo_snowflake/modules/pdo_snowflake.so /app/.heroku/php/etc/php/ext
 
 echo "[LOG] Copying cacert to PATH"
 cp $snowflake_dir/libsnowflakeclient/cacert.pem $PATH
