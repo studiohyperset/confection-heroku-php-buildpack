@@ -17,17 +17,21 @@ export PHP_HOME=$1
 echo "[LOG] Building Snowflake"
 bash $snowflake_dir/scripts/build_pdo_snowflake.sh
 
+echo "[DEBUG]"
+$PHP_HOME/bin/php -i | grep '^extension_dir'
 echo "[DEBUG] PHP_HOME=$PHP_HOME"
 echo "[DEBUG] SNOWFLAKE DIR=$snowflake_dir"
-echo "[DEBUG] PATH=$PATH"
 echo "[LOG] Copying PDO Snowflake to Extensions Folder"
-cp $PHP_HOME/pdo_snowflake/modules/pdo_snowflake.so /app/.heroku/php/etc/php/ext
+cp $PHP_HOME/pdo_snowflake/modules/pdo_snowflake.so /app/.heroku/php/lib/php/extensions/no-debug-non-zts-20190902
 
-echo "[LOG] Copying cacert to PATH"
-cp $snowflake_dir/libsnowflakeclient/cacert.pem /app/.heroku/php/
+echo "[LOG] Copying cacert to configuration folder"
+cp $snowflake_dir/libsnowflakeclient/cacert.pem /app/.heroku/php/etc/php/
 
-echo "[LOG] Inserting extension and certificate on php.ini"
-echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/php.ini 
-echo "pdo_snowflake.cacert=/app/.heroku/php/cacert.pem" >> /app/.heroku/php/etc/php/php.ini 
+echo "[LOG] Creating snowflake.ini"
+cat "/app/.heroku/php/etc/php/20-pdo_snowflake.ini" 
+
+echo "[LOG] Inserting extension and certificate on snowflake.ini"
+echo "extension=pdo_snowflake.so" >> /app/.heroku/php/etc/php/20-pdo_snowflake.ini 
+echo "pdo_snowflake.cacert=/app/.heroku/php/etc/php/cacert.pem" >> /app/.heroku/php/etc/php/20-pdo_snowflake.ini 
 
 echo "[LOG] Finished Snowflake Setup"
