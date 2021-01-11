@@ -12,7 +12,7 @@ if [ ! -d "$snowflake_dir" ]; then
   exit
 fi
 export PHP_HOME=$1
-source $snowflake_dir/scripts/build_pdo_snowflake.sh
+bash $snowflake_dir/scripts/build_pdo_snowflake.sh
 
 # /app/php/bin/phpize
 # ./configure --enable-phalcon --with-php-config=$PHP_ROOT/bin/php-config
