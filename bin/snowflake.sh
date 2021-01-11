@@ -11,7 +11,7 @@ if [ ! -d "$snowflake_dir" ]; then
   echo "[ERROR] Failed to find snowflake directory $snowflake_dir"
   exit
 fi
-cd $snowflake_dir/scripts/build_pdo_snowflake.sh
+source $snowflake_dir/scripts/build_pdo_snowflake.sh
 
 # /app/php/bin/phpize
 # ./configure --enable-phalcon --with-php-config=$PHP_ROOT/bin/php-config
