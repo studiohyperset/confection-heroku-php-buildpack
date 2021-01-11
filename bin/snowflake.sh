@@ -30,7 +30,7 @@ cp $snowflake_dir/libsnowflakeclient/cacert.pem /app/.heroku/php/etc/php/
 
 echo "[LOG] Creating snowflake.ini"
 echo "[LOG] Inserting extension and certificate on snowflake.ini"
-echo "extension=pdo_snowflake.so" > /app/.heroku/php/etc/php/20-pdo_snowflake.ini 
-echo "pdo_snowflake.cacert=/app/.heroku/php/etc/php/cacert.pem" >> /app/.heroku/php/etc/php/20-pdo_snowflake.ini 
+echo "extension=pdo_snowflake.so" > /app/.heroku/php/etc/php/conf.d/20-pdo_snowflake.ini 
+echo "pdo_snowflake.cacert=/app/.heroku/php/etc/php/cacert.pem" >> /app/.heroku/php/etc/php/conf.d/20-pdo_snowflake.ini 
 
 echo "[LOG] Finished Snowflake Setup"
