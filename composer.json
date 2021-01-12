@@ -1,14 +1,18 @@
 {
-	"name": "heroku/heroku-buildpack-php",
-	"description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
-	"keywords": ["heroku", "foreman", "php", "hhvm", "apache", "apache2", "nginx"],
-	"homepage": "https://github.com/heroku/heroku-buildpack-php",
+	"name": "studiohyperset/confection-heroku-php-buildpack",
+	"description": "Buildpack for using Snowflake PDO driver with PHP at Heroku",
+	"keywords": ["heroku", "snowflake", "php"],
+	"homepage": "https://github.com/studiohyperset/confection-heroku-php-buildpack",
 	"type": "library",
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "David Zuelke",
 			"email": "dz@heroku.com"
+        },
+        {
+			"name": "Bruno Cantuaria",
+			"email": "bruno@cantuaria.net.br"
 		}
 	],
 	"bin": [
